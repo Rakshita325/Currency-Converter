@@ -6,7 +6,7 @@ const fromCurr = document.querySelector(".from select");
 const toCurr = document.querySelector(".to select");
 const msg = document.querySelector(".msg");
 
-// ✅ Populate dropdowns
+
 for (let select of dropdowns) {
   for (let currCode in countryList) {
     let newOption = document.createElement("option");
@@ -27,7 +27,6 @@ for (let select of dropdowns) {
   });
 }
 
-// ✅ Update exchange rate (NEW API)
 const updateExchangeRate = async () => {
   let amount = document.querySelector(".amount input");
   let amtVal = amount.value;
@@ -46,7 +45,7 @@ const updateExchangeRate = async () => {
 
     let rates = data.rates;
 
-    // ✅ conversion formula
+    
     let rate = rates[to] / rates[from];
 
     let finalAmount = amtVal * rate;
@@ -58,7 +57,7 @@ const updateExchangeRate = async () => {
   }
 };
 
-// ✅ Update flag
+
 const updateFlag = (element) => {
   let currCode = element.value;
   let countryCode = countryList[currCode];
@@ -68,7 +67,6 @@ const updateFlag = (element) => {
   img.src = newSrc;
 };
 
-// 🔄 Swap currencies
 const swapBtn = document.querySelector(".dropdown i");
 
 swapBtn.addEventListener("click", () => {
@@ -81,13 +79,11 @@ swapBtn.addEventListener("click", () => {
   updateExchangeRate();
 });
 
-// ✅ Button click
 btn.addEventListener("click", (evt) => {
   evt.preventDefault();
   updateExchangeRate();
 });
 
-// ✅ Run on load
 window.addEventListener("load", () => {
   updateExchangeRate();
 });
